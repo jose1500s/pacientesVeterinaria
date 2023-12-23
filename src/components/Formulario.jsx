@@ -7,10 +7,17 @@ export default function Formulario() {
     const [email, setEmail] = useState('');
     const [fecha, setFecha] = useState('');
     const [sintomas, setSintomas] = useState('');
+    const [error, setError] = useState(false);
 
     
     const handleSubmit = (e) => {
-      console.log('enviando form...')
+      e.preventDefault();
+      //validacion inputs
+      if([nombre, propietario, email, fecha, sintomas].includes('')) {
+        setError(true)
+        return;
+      }
+      setError(false);
     }
 
     return (
