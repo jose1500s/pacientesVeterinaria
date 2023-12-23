@@ -2,6 +2,7 @@ import './App.css'
 import Header from './components/Header'
 import Formulario from './components/Formulario'
 import ListadoPacientes from './components/ListadoPacientes'
+import { Toaster } from 'sonner';
 
 function App() {
   
@@ -12,6 +13,7 @@ function App() {
       <Formulario />
       <ListadoPacientes />
       </div>
+      <Toaster position="bottom-center" richColors closeButton  />
     </div>
   )
 }

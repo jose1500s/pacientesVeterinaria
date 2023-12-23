@@ -1,4 +1,5 @@
 import { useState, useEffect} from "react"
+import { toast } from 'sonner';
 
 export default function Formulario() {
 
@@ -14,10 +15,10 @@ export default function Formulario() {
       e.preventDefault();
       //validacion inputs
       if([nombre, propietario, email, fecha, sintomas].includes('')) {
-        setError(true)
-        return;
+        toast.error('Todos los campos son obligatorios')
+      } else {
+        toast.success('enviado')
       }
-      setError(false);
     }
 
     return (
