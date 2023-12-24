@@ -1,14 +1,13 @@
 import { useState, useEffect} from "react"
 import { toast } from 'sonner';
 
-export default function Formulario() {
+export default function Formulario({pacientes, setPacientes}) {
 
     const [nombre, setNombre] = useState('');
     const [propietario, setPropietario] = useState('');
     const [email, setEmail] = useState('');
     const [fecha, setFecha] = useState('');
     const [sintomas, setSintomas] = useState('');
-    const [error, setError] = useState(false);
 
     
     const handleSubmit = (e) => {
@@ -17,7 +16,25 @@ export default function Formulario() {
       if([nombre, propietario, email, fecha, sintomas].includes('')) {
         toast.error('Todos los campos son obligatorios')
       } else {
-        toast.success('enviado')
+
+      //objeto paciente
+      const objetoPaciente = {
+        nombre, // no se necesita llave-valor, pq se llaman igual, js lo detecta
+        propietario, 
+        email, 
+        fecha, 
+        sintomas
+      }
+
+        setPacientes([...pacientes, objetoPaciente])
+        //reiniciar formulario
+        setNombre = ('')
+        setPropietario = ('')
+        setEmail = ('')
+        setFecha = ('')
+        setSintomas = ('')
+        
+        toast.success('Registrado con exito')
       }
     }
 
